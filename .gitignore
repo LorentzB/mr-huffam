@@ -25,7 +25,7 @@ ompiled source #
 *.log
 *.sql
 *.sqlite
-.env	# config
+.env
 
 # OS generated files #
 ######################
