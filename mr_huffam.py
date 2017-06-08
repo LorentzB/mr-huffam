@@ -1,7 +1,7 @@
 """
 Mr. Huffam and his newspaper.
 
-This is the discription.
+A simple script for sending newsfeed to my discord webhooks.
 """
 from bs4 import BeautifulSoup
 import requests
@@ -44,8 +44,10 @@ def mr_huffam(link, title, content, old_link):
     headers = {'Content-Type': 'application/json'}
     if old_link != link:
         cover = 'http:' + get_cover(link)
-        news = {'content': 'The breaking news is in print now; come and read,\
-         delicious friends. \n \n' '**'+title+'**',
+        news = {
+                'content':  '**'+title+'** \n' +
+                'The breaking news is in print now; ' +
+                'come and read, delicious friends. @everyone \n \n',
                 'embeds': [
                     {'title': title, 'description': content, 'url': link,
                      'image': {'url': cover}}
@@ -57,15 +59,13 @@ def mr_huffam(link, title, content, old_link):
 
 
 if __name__ == "__main__":
-    # link, title, content = get_news()
-    # old_link = link
-    old_link = ''
+    link, title, content = get_news()
+    old_link = link
     while True:
         link, title, content = get_news()
         have_news = mr_huffam(link, title, content, old_link)
         if have_news:
-            logging.warning('previous news: %s' % old_link)
-            logging.warning('latest news: %s' % link)
+            print('The latest news: %s' % link)
             old_link = link
         print('Mr. Huffam is working hard')
         time.sleep(60*20)

@@ -1,1 +1,1 @@
-worker: python Mr_Huffam.py
+worker: python mr_huffam.py
