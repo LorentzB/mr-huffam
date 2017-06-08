@@ -43,7 +43,7 @@ def mr_huffam(link, title, content, old_link):
     """Run Main function."""
     headers = {'Content-Type': 'application/json'}
     if old_link != link:
-        cover = get_cover(link)
+        cover = 'http:' + get_cover(link)
         news = {'content': 'The breaking news is in print now; come and read,\
          delicious friends. \n \n' '**'+title+'**',
                 'embeds': [
